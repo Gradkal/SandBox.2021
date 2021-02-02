@@ -12,11 +12,17 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatISPlayer;
 
+    //Stats
+    public float HitPoints;
+    public float MaxHItPoints;
+    public float KnocBackResist;
+
     
+
     // Patroling
     public Vector3 walkPoint;
     public bool walkPointSet;
-    public float walkPoinRange;
+    public float walkPointRange;
 
 
     //Attacking
@@ -65,8 +71,8 @@ public class EnemyAI : MonoBehaviour
     private void SearchWalkPoint()
     {
         //Calculate random point in range
-        float randomZ = Random.Range(-walkPoinRange, walkPoinRange);
-        float randomX = Random.Range(-walkPoinRange, walkPoinRange);
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
@@ -101,6 +107,21 @@ public class EnemyAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        HitPoints -= damage;
+        if (HitPoints < 0)
+        {
+            HitPoints = 0;
+            //play dead_animation here;
+        }
+    }
+
+    public void Dead()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()

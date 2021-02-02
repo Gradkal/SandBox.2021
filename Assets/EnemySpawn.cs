@@ -6,8 +6,10 @@ public class EnemySpawn : MonoBehaviour
 {
 
     public GameObject enemyPrefab;
-    public Transform EnemyPos;
-    private float repeatRate = 5.0f;
+    public Transform[] EnemyPos;
+
+    public float repeatRate = 2;
+    public float LifeTime = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -15,17 +17,19 @@ public class EnemySpawn : MonoBehaviour
         
     }
 
-    void OnTriggerEnterEnter ( Collider other)
+    void OnTriggerEnter ( Collider other)
     {
         InvokeRepeating("EnemySpawner", 0.5f, repeatRate);
-        Destroy(gameObject, 11);
+        Destroy(gameObject, LifeTime);
         gameObject.GetComponent<BoxCollider>().enabled = false;
 
     }
 
     void EnemySpawner()
     {
-        Instantiate(enemyPrefab, EnemyPos.position, EnemyPos.rotation);
+        int randomNumber = Mathf.RoundToInt(Random.Range(0f, EnemyPos.Length - 1));
+
+        Instantiate(enemyPrefab, EnemyPos[randomNumber].position, EnemyPos[randomNumber].rotation);
     }
 
     void OnDrawGizmos()
