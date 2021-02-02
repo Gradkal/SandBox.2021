@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour
 {
+    //Stats
     public float moveSpeed = 4f;
     public float JumpForce;
+
+    public Animator anim;
 
     public Rigidbody rb;
     public bool IsOnTheGround = true;
 
     Vector3 forward, right;
+
+
+    //Attack
+    public Collider[] attackHitboxes;
 
     void Start()
     {
@@ -22,19 +29,26 @@ public class CharController : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
         if (Input.anyKey)
             Move();
 
-        if(Input.GetButtonDown("Jump") && IsOnTheGround)
+
+        //Jump
+        /*if(Input.GetButtonDown("Jump") && IsOnTheGround)
         {
             rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
 
             IsOnTheGround = false;
-        }
+        }*/
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
     }
 
     void Move()
@@ -50,6 +64,10 @@ public class CharController : MonoBehaviour
         transform.position += upMovement;
     }
 
+    void Attack()
+    {
+        anim.SetTrigger("Attack");
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")

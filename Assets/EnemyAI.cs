@@ -13,8 +13,8 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatISPlayer;
 
     //Stats
-    public float HitPoints;
-    public float MaxHItPoints;
+    public float HitPoints = 3;
+    public float MaxHitPoints;
     public float KnocBackResist;
 
     
@@ -51,6 +51,11 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         //if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
+        if(HitPoints <=0)
+        {
+            Dead();
+        }
     }
 
     private void Patroling()
@@ -109,6 +114,13 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "HitBox")
+        {
+            HitPoints -= 1;
+        }
+    }
     public void TakeDamage(float damage)
     {
         HitPoints -= damage;

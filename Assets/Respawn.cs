@@ -25,4 +25,15 @@ public class Respawn : MonoBehaviour
         Player.transform.position = RespawnPoint.transform.position;
         Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        foreach (Collider col in GetComponents<Collider>())
+        {
+            Gizmos.matrix = col.transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        }
+    }
 }
