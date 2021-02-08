@@ -5,23 +5,22 @@ using UnityEngine;
 public class CharController : MonoBehaviour
 {
 
-    [HideInInspector] public Animator anim;
-    [HideInInspector] public Rigidbody rb;
-    [HideInInspector] public CharacterController controller;
+    public CharacterController controller;
 
     //Stats
     public float moveSpeed = 4f;
-    public float dashSpeed;
-    public float dashTime;
     public float JumpForce;
 
-    //States
+    public Animator anim;
+
+    public Rigidbody rb;
     public bool IsOnTheGround = true;
+
+
     public float turnSmoothTime;
     float turnSmoothVelocity;
 
-    // Dash & Movement
-    public Vector3 movDir;
+    Vector3 forward, right;
 
 
     //Attack
@@ -29,8 +28,11 @@ public class CharController : MonoBehaviour
 
     void Start()
     {
+        forward = Camera.main.transform.forward;
+        forward.y = 0;
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
         rb = GetComponent<Rigidbody>();
-        anim = GetComponentInChildren<Animator>();
 
     }
 
@@ -42,19 +44,35 @@ public class CharController : MonoBehaviour
             Move();
 
 
+        //Jump
+        /*if(Input.GetButtonDown("Jump") && IsOnTheGround)
+        {
+            rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+
+            IsOnTheGround = false;
+        }*/
+
         if (Input.GetMouseButtonDown(0))
         {
             Attack();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            StartCoroutine(Dash());
         }
     }
 
     void Move()
     {
+        /*
+        Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
+        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
+        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
+
+        Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
+
+        transform.forward = heading;
+        transform.position += rightMovement;
+        transform.position += upMovement;
+
+        */
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -64,11 +82,9 @@ public class CharController : MonoBehaviour
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-            controller.Move( movDir.normalized * moveSpeed * Time.deltaTime);
+            controller.Move(direction * moveSpeed * Time.deltaTime);
 
         }
     }
@@ -77,19 +93,6 @@ public class CharController : MonoBehaviour
     {
         anim.SetTrigger("Attack");
     }
-
-    IEnumerator Dash()
-    {
-        float startTime = Time.time;
-
-        while(Time.time < startTime + dashTime)
-        {
-            controller.Move(movDir* dashSpeed * Time.deltaTime);
-
-            yield return null;
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")

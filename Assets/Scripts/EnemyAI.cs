@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-
 
 
 public class EnemyAI : MonoBehaviour
@@ -22,11 +20,11 @@ public class EnemyAI : MonoBehaviour
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
-    
     //Stats
     public float HitPoints = 3;
     public float MaxHitPoints;
-    
+
+    public float knockBackForce;
 
     // Patroling
     public Vector3 walkPoint;
@@ -135,16 +133,27 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("HitBox"))
+        if(collision.gameObject.tag == "HitBox")
         {
             HitPoints -= 1;
+
+            Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                Vector3 direction = collision.transform.position - transform.position;
+                direction.y = 0;
+
+                rb.AddForce(direction.normalized * knockBackForce, ForceMode.Impulse);
+            }
+
         }
     }
     public void TakeDamage(float damage)
     {
-        HitPoints -= damage;
+        HitPoints-= damage;
 
     }
 

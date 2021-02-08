@@ -6,12 +6,17 @@ m_ProjectFiles:
     m_ModificationDate:
       serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
       ticks: 637483153538400848
     m_Hash: 3701416499
 =======
       ticks: 637483731860000000
     m_Hash: 2569786671
 >>>>>>> ceedf29bdb6366bc397a7ea372e0fe0e44148e1d
+=======
+      ticks: 637483401020000000
+    m_Hash: 4096578798
+>>>>>>> parent of ceedf29... Add a lot of things
   m_LockFileStatus:
     m_FilePath: D:/E-artsup/semestre 2/unity/SandBox.2021/Packages/packages-lock.json
     m_PathExists: 1
@@ -19,12 +24,17 @@ m_ProjectFiles:
     m_ModificationDate:
       serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
       ticks: 637483153841937619
     m_Hash: 3963133079
 =======
       ticks: 637483731880000000
     m_Hash: 2923393916
 >>>>>>> ceedf29bdb6366bc397a7ea372e0fe0e44148e1d
+=======
+      ticks: 637483401040000000
+    m_Hash: 56696574
+>>>>>>> parent of ceedf29... Add a lot of things
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -340,75 +350,6 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
         revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
-        path: 
-    - packageId: com.unity.ide.vscode@1.1.4
-      testable: 0
-      isDirectDependency: 1
-      version: 1.1.4
-      source: 1
-      resolvedPath: "D:\\5e Ann\xE9e\\GameProject\\SandBox.2021\\Library\\PackageCache\\com.unity.ide.vscode@1.1.4"
-      assetPath: Packages/com.unity.ide.vscode
-      name: com.unity.ide.vscode
-      displayName: Visual Studio Code Editor
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: Code editor integration for supporting Visual Studio Code as code
-        editor for unity. Adds support for generating csproj files for intellisense
-        purposes, auto discovery of installations, etc.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.2
-        - 1.0.3
-        - 1.0.7
-        - 1.1.0
-        - 1.1.2
-        - 1.1.3
-        - 1.1.4
-        - 1.2.0
-        - 1.2.1
-        - 1.2.2
-        - 1.2.3
-        compatible:
-        - 1.0.2
-        - 1.0.3
-        - 1.0.7
-        - 1.1.0
-        - 1.1.2
-        - 1.1.3
-        - 1.1.4
-        - 1.2.0
-        - 1.2.1
-        - 1.2.2
-        - 1.2.3
-        verified: 1.2.3
-      dependencies: []
-      resolvedDependencies: []
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637140134180000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: git@github.cds.internal.unity3d.com:unity/com.unity.ide.vscode.git
-        revision: 5b09e2bc6a13b557ca1ebf1db5f960746631630e
         path: 
     - packageId: com.unity.probuilder@4.2.3
       testable: 0
@@ -933,6 +874,69 @@ m_PackageAssets:
         type: git
         url: git@github.cds.internal.unity3d.com:unity/com.unity.timeline.git
         revision: 4f533b5e8264efc3fb819463027d0c40f24b5801
+        path: 
+    - packageId: com.unity.ugui@1.0.0
+      testable: 0
+      isDirectDependency: 1
+      version: 1.0.0
+      source: 2
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui
+      assetPath: Packages/com.unity.ugui
+      name: com.unity.ugui
+      displayName: Unity UI
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: "Unity UI is a UI toolkit for developing user interfaces for games
+        and applications. It is a GameObject-based UI system that uses Components
+        and the Game View to arrange, position, and style user interfaces. \u200B
+        You cannot use Unity UI to create or change user interfaces in the Unity
+        Editor."
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.0.0
+        compatible:
+        - 1.0.0
+        verified: 1.0.0
+      dependencies:
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      keywords:
+      - UI
+      - ugui
+      - Unity UI
+      - Canvas
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -2656,69 +2660,6 @@ m_PackageAssets:
       - name: com.unity.modules.jsonserialize
         version: 1.0.0
       keywords: []
-      registry:
-        id: 
-        name: 
-        url: 
-        scopes: []
-        isDefault: 0
-        capabilities: 0
-      hasRegistry: 0
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 0
-      documentationUrl: 
-      hasRepository: 0
-      repository:
-        type: 
-        url: 
-        revision: 
-        path: 
-    - packageId: com.unity.ugui@1.0.0
-      testable: 0
-      isDirectDependency: 0
-      version: 1.0.0
-      source: 2
-      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui
-      assetPath: Packages/com.unity.ugui
-      name: com.unity.ugui
-      displayName: Unity UI
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: "Unity UI is a UI toolkit for developing user interfaces for games
-        and applications. It is a GameObject-based UI system that uses Components
-        and the Game View to arrange, position, and style user interfaces. \u200B
-        You cannot use Unity UI to create or change user interfaces in the Unity
-        Editor."
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0
-        compatible:
-        - 1.0.0
-        verified: 1.0.0
-      dependencies:
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      keywords:
-      - UI
-      - ugui
-      - Unity UI
-      - Canvas
       registry:
         id: 
         name: 
