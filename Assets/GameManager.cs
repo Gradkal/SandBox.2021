@@ -5,13 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public static int countID = 0;
     
     [SerializeField] private GameObject Player;
     public Transform RespawnPoint;
 
     public Rigidbody PlayerSource;
 
-    private void Awade()
+    private void Awake()
     {
         MakeSingleton();
     }
