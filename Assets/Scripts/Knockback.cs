@@ -5,17 +5,19 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     [SerializeField] private float knockBackForce;
+    //public Combatant stats;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("HitBox"))
         {
-            Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+            Rigidbody rb = GetComponent<Rigidbody>();
 
             if (rb != null)
             {
-                Vector3 direction = collision.transform.position - transform.position;
+                Vector3 direction = transform.position - collision.transform.position;
                 direction.y = 0;
+
 
                 rb.AddForce(direction.normalized * knockBackForce, ForceMode.Impulse);
             }
